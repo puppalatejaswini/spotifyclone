@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: smaller;
+            background-color: #0d0d0d;
+            color: #FFFFFF;
+          
+            
+        }
+
+        .spotify-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+        .logo-container{
+         padding: 10px;   
+        }
+.content-container{
+    padding: 100px;
+}
+        
+
+        .sidebar {
+            width: 0px;
+            background-color: #181818;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spotify-logo img {
+            position:absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .menu span {
+            display: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .menu .active {
+            font-weight:bold;
+        }
+
+        .search-bar input {
+            width: 50%;
+            padding: 20px;
+            position:absolute;
+            top: 100px;
+            left: 400px;
+            margin-bottom: 20px;
+            background-color: #2d2c2c;
+            border: none;
+            border-radius: 10px;
+            color: #FFFFFF;
+        }
+
+        .track-list {
+            position:absolute;
+            top: 200px;
+            left: 400px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .track-item img {
+            width: 40px;
+            height: 45px;
+            border-radius: 30%;
+            margin-right: 10px;
+        }
+
+        .track-info {
+            flex-grow: 30;
+        }
+
+        .track-name {
+            display: block;
+            font-size: 15px;
+        }
+
+        .artist-name {
+            display: block;
+            font-size: 12px;
+            color: #B3B3B3;
+        }
+
+        .track-duration {
+            font-size: 12px;
+            font-synthesis-position: 20;
+            color: #B3B3B3;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:image-set(spotify_logo);
+        }
+
+        .current-track {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .current-track img {
+            width: 450px;
+            height: 150px;
+            margin-left: 100px;
+        }
+
+        .track-details {
+            text-align: left;
+        }
+
+        .track-title {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .track-artist {
+            display: block;
+            font-size: 18px;
+            color: #B3B3B3;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .control-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #FFFFFF;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .control-button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="spotify-container">
+        <div class="sidebar">
+            <div class="spotify-logo">
+                <img src="spotify_logo.png" alt="Spotify">
+            </div>
+            <div class="menu">
+                <span class="active" style="position: absolute; top: 50px; left: 400px;">For You</span>
+                <span class="Top Tracks" style="position: absolute; top: 50px; right: 950px;">Top Tracks</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Song, Artist">
+            </div>
+            <ul class="track-list">
+                <li class="track-item">
+                    <img src="Pawankalyan.jpg" alt="Pawankalyan">
+                    <div class="track-info">
+                        <span class="track-name">Pawankalyan</span>
+                        <span class="artist-name">Gaddar</span>
+                    </div>
+                    <span class="track-duration">4:16</span>
+                </li>
+                <li class="track-item">
+                    <img src="DEVARAA.jpg" alt="devara">
+                    <div class="track-info">
+                        <span class="track-name">devara</span>
+                        <span class="artist-name">NTR</span>
+                    </div>
+                    <span class="track-duration">5:24</span>
+                </li>
+                <!-- Add more track items as needed -->
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="current-track">
+                <img src="Pawankalyan.jpg" alt="JANASENA">
+                <div class="track-details">
+                    <span class="track-title"style="position: absolute; top: 200px; left: 650px;">JANASENANI</span>
+                    <span class="track-artist"style="position: absolute; top: 225px; left: 650px;">Nalgonda gaddar</span>
+                    
+            
+                </div>
+            </div>
+            <div class="player-controls">
+                <button class="control-button">⏮️</button>
+                <button class="control-button play-pause-button">⏯️</button>
+                <button class="control-button">⏭️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const playPauseButton = document.querySelector('.play-pause-button');
+        let isPlaying = false;
+
+        playPauseButton.addEventListener('click', () => {
+            if (isPlaying) {
+                playPauseButton.textContent = '⏯️';
+                // Pause the audio (if implemented)
+            } else {
+                playPauseButton.textContent = '⏸️';
+                // Play the audio (if implemented)
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
